@@ -30,9 +30,18 @@ Para iniciar o crawler basta executar o arquivo mrcrowley.rb passando como param
 > ruby mrcrowley.rb word1 word2 word3 ... wordn
 
 
+### Relatório
+
+Uma rake tasks que mostra o total de tweets e usuários, a quantidade de tweets por hora do dia
+e o usuário que mais tweetou, pode ser executada através do seguinte comando:
+
+> rake report:simple
+
+
 ## Design
 
 
 ## TODO
 
 * assync tweet post
+* tests
