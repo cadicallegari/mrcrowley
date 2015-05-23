@@ -29,6 +29,10 @@ Para iniciar o crawler basta executar o arquivo mrcrowley.rb passando como param
 
 > ruby mrcrowley.rb word1 word2 word3 ... wordn
 
+
+## Design
+
+
 ## TODO
 
 * assync tweet post
