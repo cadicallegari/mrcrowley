@@ -1,0 +1,60 @@
+<%- model_class = City -%>
+
+<div class="page-header">
+  <%= link_to new_city_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
+                                   :default => "Edit #{model_class.model_name.human}") %>
+  <% end %>
+  <h1>
+    <%=t '.title', :default => model_class.model_name.human.pluralize %> 
+  </h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:name) %></th>
+        <th><%= model_class.human_attribute_name(:license) %></th>
+        <th><%= model_class.human_attribute_name(:state) %></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @cities) do |city| %>
+        <td><%= city.id %></td>
+        <td><%= city.name %></td>
+        <td><%= city.try(:license).try(:name) %></td>
+        <td><%= city.try(:state).try(:name) %></td>
+
+        <td>
+
+          <div class="btn-group">
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+              <%=t 'helpers.options' %> 
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li role="presentation">
+                <%= link_to t("helpers.links.show"), city %>
+              </li>
+              <li role="presentation">
+                <%= link_to t("helpers.links.edit"), edit_city_path(city) %>
+              </li>
+              <li role="presentation">
+                <%= link_to t("helpers.links.destroy"), city, method: :delete, data: { confirm: t('helpers.links.confirm') } %>
+              </li>
+            </ul>
+          </div>
+
+        </td>
+
+
+      <% end %>
+      
+    </tbody>
+  </table>
+</div>
