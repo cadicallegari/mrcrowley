@@ -12,6 +12,7 @@ TweetStream.configure do |config|
   config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
   config.auth_method        = :oauth
 end
+
 URL = 'http://localhost:3000/api/v1/tweets'
 
 
@@ -31,9 +32,11 @@ def parser_tweet(raw_tweet)
   tweet
 end
 
+
 def send_tweet(tweet)
   HTTParty.post(URL, body: parser_tweet(tweet))
 end
+
 
 words = []
 ARGV.each do |arg|

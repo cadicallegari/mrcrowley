@@ -2,6 +2,11 @@ namespace :report do
   desc "simpe report"
   task :simple => :environment do
 
+    puts "########## Totais"
+    puts "Tweets #{Tweet.count} Usuarios #{User.count}"
+
+    puts "\n########## Média de tweets por horário"
+
     tweets = Tweet.all
     tweets_per_hour = {}
 
@@ -11,7 +16,6 @@ namespace :report do
       }.compact.count
     end
 
-    puts "########## Média de tweets por horário"
     tweets_per_hour.each do |key, value|
       puts "#{key.to_s.rjust(2, '0')}:00 = #{value}"
     end
